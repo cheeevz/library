@@ -1,0 +1,135 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+.switch-toggle {
+    float: left;
+    background: rgb(255, 255, 255);
+}
+
+.switch-toggle input {
+    position: absolute;
+    opacity: 0;
+}
+
+.switch-toggle input+label {
+    padding: 7px;
+    float: left;
+    color: #000000;
+    cursor: pointer;
+}
+
+.switch-toggle input:checked+.red {
+    background: rgb(255, 51, 51);
+}
+
+.switch-toggle input:checked+.green {
+    background: rgb(105, 232, 105);
+}
+
+dialog{
+    display: none;
+}
+
+dialog[open]{
+    display:block;
+}
+
+#newBook p{
+    text-align: center;
+}
+
+form {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap:20px;
+}
+
+.form-left{
+    grid-column: 1 / 2;
+    grid-row : 1 / 3;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.form-right{
+    grid-column: 2 / 3;
+    grid-row : 1 / 3;
+    display:flex;
+    flex-direction: column;
+    gap:10px;
+}
+.form-bottom{
+    grid-column: 1 / 3;
+    grid-row : 3 / 4;
+    display:flex;
+    justify-content: center;
+    gap:20px;
+}
+
+.book {
+    width :200px;
+    height: 200px;
+    text-align: left;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    overflow: scroll;
+}
+
+button{
+	box-shadow:inset 0px 1px 0px 0px #9acc85;
+	background-color:transparent;
+	border:1px solid #3b6e22;
+	display:inline-block;
+	cursor:pointer;
+	color:#000000;
+	font-family:Arial;
+	font-size:20px;
+	font-weight:bold;
+	padding:6px 19px;
+	text-decoration:none;
+}
+
+h1{
+    text-align: center;
+}
+.add{
+    margin-top : 20px;
+}
+
+#bookList{
+    margin-top : 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    gap:20px;
+}
+
+.book {
+    border: 3px solid #ccc;
+    padding: 10px;
+    background-color: #f9f9f9;
+}
+
+.book.read {
+    border-color: green;
+}
+
+.book.not-read {
+    border-color: red;
+}
+
+.book button{
+    border-color: rgb(161, 161, 161);
+    background-color: beige;
+    font-size: 15px;
+}
+
+.buttonContainer{
+    display:flex;
+    justify-content: space-around;
+}

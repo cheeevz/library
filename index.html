@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Library</title>
+    <link href="styles.css" rel="stylesheet" />
+</head>
+
+<body>
+    <h1>Library</h1>
+    <div class="container">
+        <dialog class="bookForm" id="bookForm">
+            <p>Add new book to the library</p>
+            <form id="newBook" method="dialog">
+                <div class="form-left">
+                    <label for='name'>Name</label>
+                    <input id="name" type="text" required>
+                    <label for='author'>Author</label>
+                    <input id="author" type="text" required>
+                </div>
+                <div class="form-right">
+                    <label for='pages'>Pages</label>
+                    <input id="pages" type="text" required>
+                    <label for='switch-toggle'>Has the book been read ?</label>
+                    <div class="switch-toggle">
+                        <input id="on" name="state-d" class="green" type="radio" />
+                        <label for="on" class="green" onclick="">YES</label>
+                        <input id="off" name="state-d" class="red" type="radio" />
+                        <label for="off" class="red" onclick="">NO</label>
+                    </div>
+                </div>
+                <div class="form-bottom">
+                <button class="cancel" type="button">Cancel</button>
+                <button class="ok" type="submit">Submit</button>
+                </div>
+            </form>
+        </dialog>
+    </div>
+    <button class="add">Add New Book</button>
+    <div id="bookList">
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
