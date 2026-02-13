@@ -11,15 +11,20 @@ const readYes = document.querySelector('#on');
 const readNo = document.querySelector('#off');
 const bookForm = document.getElementById('newBook');
 const bookList = document.querySelector('#bookList');
+const bookName = document.getElementById("name");
+const bookAuthor = document.getElementById("author");
+const bookPages = document.getElementById("pages");
 
-addBookButton.addEventListener('click' , () =>{
+
+
+addBookButton.addEventListener('click', () => {
   readYes.checked = false;
   readNo.checked = false;
   formRead.style.backgroundColor = "white";
   addBookDialog.show();
 });
 
-cancelButton.addEventListener('click' , () =>{
+cancelButton.addEventListener('click', () => {
   formTitle.value = '';
   formAuthor.value = '';
   formPages.value = '';
@@ -29,15 +34,26 @@ cancelButton.addEventListener('click' , () =>{
   addBookDialog.close();
 });
 
-okButton.addEventListener('click' , () =>{
-  if (formTitle.value.trim() === '' || formAuthor.value.trim() === '' || formPages.value.trim() === '' || (!readYes.checked && !readNo.checked)) {
-    alert('Veuillez remplir tous les champs.');
-    return;
+okButton.addEventListener('click', () => {
+  if (bookName.validity.valueMissing) {
+    bookName.setCustomValidity("The book name must be filled!");
   }
-  let title = formTitle.value;
-  let author = formAuthor.value;
-  let pages = parseInt(formPages.value);
-  let read = readYes.checked;
+  else if (bookAuthor.validity.valueMissing) {
+    bookAuthor.setCustomValidity("The book author must be filled!");
+  }
+  else if (bookPages.validity.valueMissing) {
+    bookPages.setCustomValidity("The number of pages must be filled!");
+  }
+  else {
+    addBook(formTitle.value, formAuthor.value, formPages.value, readYes.checked);
+  }
+  
+});
+function addBook(bookTitle, bookAuthor, bookPages, bookRead) {
+  let title = bookTitle;
+  let author = bookAuthor;
+  let pages = parseInt(bookPages);
+  let read = bookRead;
   addBookToLibrary(title, author, pages, read);
   displayBooks();
   formTitle.value = '';
@@ -47,7 +63,7 @@ okButton.addEventListener('click' , () =>{
   readNo.checked = false;
   formRead.style.backgroundColor = "white";
   addBookDialog.close();
-});
+}
 
 bookList.addEventListener('click', (e) => {
   if (e.target.classList.contains('remove')) {
@@ -83,7 +99,7 @@ function Book(title, author, pages, read, id) {
 
     }
   };
-  this.id=id;
+  this.id = id;
 }
 
 function addBookToLibrary(title, author, pages, read) {
@@ -92,7 +108,7 @@ function addBookToLibrary(title, author, pages, read) {
   myLibrary.push(book);
 }
 
-function displayBook(){
+function displayBook() {
   myLibrary.forEach((element) => console.log(element));
 }
 
@@ -114,3 +130,31 @@ function displayBooks() {
     bookList.appendChild(bookDiv);
   });
 }
+
+
+bookName.addEventListener("input", (event) => {
+  if (bookName.validity.valueMissing) {
+    bookName.setCustomValidity("The book name must be filled!");
+    event.preventDefault();
+  } else {
+    bookName.setCustomValidity("");
+  }
+});
+
+bookAuthor.addEventListener("input", (event) => {
+  if (bookAuthor.validity.valueMissing) {
+    bookAuthor.setCustomValidity("The book author must be filled!");
+    event.preventDefault();
+  } else {
+    bookAuthor.setCustomValidity("");
+  }
+});
+
+bookPages.addEventListener("input", (event) => {
+  if (bookPages.validity.valueMissing) {
+    bookPages.setCustomValidity("The number of pages must be filled!");
+    event.preventDefault();
+  } else {
+    bookPages.setCustomValidity("");
+  }
+});

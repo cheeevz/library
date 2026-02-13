@@ -16,13 +16,13 @@
             <form id="newBook" method="dialog">
                 <div class="form-left">
                     <label for='name'>Name</label>
-                    <input id="name" type="text" required>
+                    <input id="name" type="text" name="name" required>
                     <label for='author'>Author</label>
-                    <input id="author" type="text" required>
+                    <input id="author" type="text" name="author" required>
                 </div>
                 <div class="form-right">
                     <label for='pages'>Pages</label>
-                    <input id="pages" type="text" required>
+                    <input id="pages" type="text" name="pages" required>
                     <label for='switch-toggle'>Has the book been read ?</label>
                     <div class="switch-toggle">
                         <input id="on" name="state-d" class="green" type="radio" />
@@ -32,8 +32,8 @@
                     </div>
                 </div>
                 <div class="form-bottom">
-                <button class="cancel" type="button">Cancel</button>
-                <button class="ok" type="submit">Submit</button>
+                    <button class="cancel" type="button">Cancel</button>
+                    <button class="ok" type="submit">Submit</button>
                 </div>
             </form>
         </dialog>
